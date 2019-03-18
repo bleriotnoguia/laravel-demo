@@ -18,7 +18,7 @@ class EventsTableSeeder extends Seeder
                     'description' => 'Make php great again',
                     'location' => 'Paris',
                     'price' => 0.00,
-                    'start' => new DateTime('+5 days')
+                    'start_at' => new DateTime('+5 days')
                 ],
                 [
                     'name' => 'php event 2',

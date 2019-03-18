@@ -32,4 +32,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
+
+    public function uploads()
+    {
+        return $this->hasMany(Upload::class);
+    }
+
 }

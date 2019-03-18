@@ -51,15 +51,7 @@ Route::get('/about', function () {
     return view('pages/about');
 });
 
-Route::get('/events', function(){
-	$events = [
-		'Make php great again',
-		'PHP conference',
-		'Meetup teacher du net',
-		'Laravel conference'
-	];
-	return view('events.index', compact('events'));
-});
+Route::get('/events', 'EventController@index');
 
 Route::get('salut', function(){
     return "salut les gens !";

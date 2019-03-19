@@ -56,5 +56,5 @@ if (token) {
 // });
 
 
-window.Dropzone = require('dropzone');
-Dropzone.autoDiscover = false;
+// window.Dropzone = require('dropzone');
+// Dropzone.autoDiscover = false;

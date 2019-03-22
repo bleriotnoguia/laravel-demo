@@ -82,3 +82,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>'ip'], function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// routes for file upload
+
+Route::get('/file', function(){
+	return view('file');
+});
+
+Route::post('/file/upload', 'FileController@store')->name('file.upload');
+
+Route::post('upload', 'FileController@upload')->name('upload');
+
+// Route::get('upload', 'FileController@upload');

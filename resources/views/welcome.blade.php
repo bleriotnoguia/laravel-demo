@@ -6,9 +6,8 @@
 
 @section('content')
 <h1>Welcome to {{ config('app.name') }}</h1>
-    <h2>{{ $first_name.' '.$last_name }}
-    </h2>
-    @include('layouts.shared._weekend')
+<h2>Bleriot Noguia</h2>
+@include('layouts.shared._weekend')
 @stop
 
 @section('footer')

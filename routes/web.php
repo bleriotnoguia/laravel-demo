@@ -56,12 +56,7 @@ Route::get('/events', 'EventController@index');
 Route::get('salut', function(){
     return "salut les gens !";
 });
-
-
-
-
-
-// $route = 
+ 
 Route::get('salut/{name}-{id}', ['as'=>'salut',function($slug, $id){
 	//return "Lien: /salut/$slug-$id ";
 	// $test = 'just un test';
@@ -96,3 +91,12 @@ Route::post('upload', 'FileController@upload')->name('upload');
 // Route::get('upload', 'FileController@upload');
 
 Route::get('email', 'EmailController@sendEmail');
+
+Route::get('notif', function (){
+	return view('notif');
+});
+
+Route::get('test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});

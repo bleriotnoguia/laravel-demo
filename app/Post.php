@@ -8,7 +8,7 @@ class Post extends Model{
 
 	public $timestamps = false;
 
-	public $fillable = ['title', 'slug', 'body', 'online', 'category_id', 'tags'];
+	public $fillable = ['title', 'user_id', 'slug', 'body', 'online', 'category_id', 'tags'];
 
 	public function category(){
 		return $this->belongsTo('App\Category');
@@ -23,6 +23,18 @@ class Post extends Model{
 	// 		return $this->tags->pluck('id')->toArray();
 	// 	}
 	// }
+
+	public function getAll(){
+        return static::with('category')->get();
+    }
+
+    public function findPost($id){
+        return static::find($id);
+    }
+
+    public function deletePost($id){
+        return static::find($id)->delete();
+    }
 
 	public function setTagsAttribute($value){
 		if($this->id){

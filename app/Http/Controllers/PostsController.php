@@ -10,10 +10,15 @@ use Validator;
 use App\Post;
 use App\User;
 use App\Http\Requests\EditPostRequest;
+use App\Repositories\Post\PostInterface as PostInterface;
 use App\Category;
 
 class PostsController extends Controller
 {
+
+    public function __construct(PostInterface $post){
+        $this->post = $post;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +31,8 @@ class PostsController extends Controller
         // dd(Auth::check());
         // Auth::logout();
         // $posts = Post::searchByTitle('titre')->get();
-        $posts = Post::with('category')->get();
+        $posts = $this->post->getAll();
+        // $posts = Post::with('category')->get();
         // $posts->load('category');
         return view('posts.index', compact('posts'));
     }
@@ -104,7 +110,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->post->delete($id);
+        return redirect()->route('users');
     }
 
 }

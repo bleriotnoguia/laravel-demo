@@ -37,5 +37,8 @@
                 En ligne ?
             </label>
         </div>
+        @if(Auth::check())
+        {!! Form::hidden('user_id', Auth::user()->id ) !!}
+        @endif
         {!! Form::input('submit', 'Submit', null, ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}    

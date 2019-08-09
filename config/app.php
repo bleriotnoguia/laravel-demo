@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ValidatorServiceProvider::class,
         App\Providers\CacheServiceProvider::class,
+        App\Repositories\Post\PostRepoServiceProvide::class,
 
     ],
 

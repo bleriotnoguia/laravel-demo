@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\FormSubmitted;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,9 +13,24 @@
 |
 */
 
-Route::resource('news', 'PostsController');
+Route::get('pusher/test', function(){
+	return view('pusher');
+});
 
-Route::group(['namespace' => 'Admin','prefix' => 'admin'], function () {
+Route::get('pusher/sender', function(){
+	return view('sender');
+});
+
+Route::post('pusher/sender', function(){
+	// dd(request()->content);
+	$text = request()->content;
+	// This is the post
+	event(new FormSubmitted($text));
+});
+
+Route::resource('news', 'PostsController')->middleware('auth');
+
+Route::group(['namespace' => 'Admin','prefix' => 'admin', 'middleware'=>['auth']], function () {
 	Route::resource('posts', 'PostsController');
 });
 

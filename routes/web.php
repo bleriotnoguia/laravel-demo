@@ -13,6 +13,8 @@ use App\Events\FormSubmitted;
 |
 */
 
+Route::get('pay', 'PayOrderController@store');
+
 Route::get('pusher/test', function(){
 	return view('pusher');
 });

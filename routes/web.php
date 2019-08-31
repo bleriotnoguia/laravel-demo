@@ -1,6 +1,8 @@
 <?php
 
 use App\Events\FormSubmitted;
+use App\PostcardSendingService;
+use App\Postcard;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,17 @@ use App\Events\FormSubmitted;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/postcards', function(){
+
+	$postcardService = new PostcardSendingService('us', 4, 6);
+	$postcardService->hello('Hello from Coder\'s Tape USA !', 'test@test.com');
+
+});
+
+Route::get('/facades', function(){
+	Postcard::hello('hello from facades', 'new@new.com');
+});
 
 Route::get('pay', 'PayOrderController@store');
 

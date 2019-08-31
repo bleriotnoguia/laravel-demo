@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Billing\BankPaymentGateway;
 use App\Billing\PaymentGatewayContract;
 use App\Billing\CreditPaymentGateway;
+use App\PostcardSendingService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
                 return new CreditPaymentGateway('usd');
             }
             return new BankPaymentGateway('usd');
+        });
+
+        $this->app->singleton('Postcard', function($app){
+            return new PostcardSendingService('us', 4, 6);
         });
     }
 }
